@@ -47,6 +47,9 @@ class DogImageWidget extends ConsumerWidget {
         title: const Center(child: Text('Buscador de Mascotas')),
       ),
       body: Center(
+          
+
+
         child: dogImageAsyncValue.when(
           data: (dogImage) => SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
@@ -54,17 +57,23 @@ class DogImageWidget extends ConsumerWidget {
               image: NetworkImage(dogImage),
               placeholder: const AssetImage('assets/loader.gif'),
               fit: BoxFit.cover,
+              
               imageErrorBuilder: (context, error, stackTrace) {
                 return const FadeInImage(
                     placeholder: AssetImage('assets/loader.gif'),
-                    image: NetworkImage(
-                        'https://previews.123rf.com/images/kaymosk/kaymosk1804/kaymosk180400006/100130939-error-404-page-not-found-error-with-glitch-effect-on-screen-vector-illustration-for-your-design.jpg'),
+                    image: AssetImage('assets/errors404.gif'),
                     fit: BoxFit.cover);
               },
+
+            
+                
             ),
           ),
           loading: () => const CircularProgressIndicator(),
           error: (error, stackTrace) => Text('Error: $error'),
+  
+          
+
         ),
       ),
       floatingActionButton: ElevatedButton(
