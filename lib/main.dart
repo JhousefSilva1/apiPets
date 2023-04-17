@@ -67,10 +67,24 @@ class DogImageWidget extends ConsumerWidget {
           error: (error, stackTrace) => Text('Error: $error'),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: ElevatedButton(
+        //texto
+        style: ButtonStyle(
+          //espacio
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+
+          //espacio despues de la imagne
+
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+          )),
+          backgroundColor: MaterialStateProperty.all<Color>(
+              Color.fromARGB(255, 33, 177, 243)),
+        ),
+        child: const Text('Generar nueva Imagen'),
         onPressed: () => ref.refresh(dogImageProvider),
-        tooltip: 'Refresh',
-        child: const Icon(Icons.refresh_outlined),
       ),
     );
   }
